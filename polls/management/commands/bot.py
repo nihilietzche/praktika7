@@ -122,9 +122,9 @@ def keyboard_callback_handler(update, context):
     chat_id = update.effective_message.chat_id
     current_text = update.effective_message.text
 
+    q = Category.objects.count()
+    z = q//4+q%4
     i = 1
-    q = 4
-    list = []
 
     if data == CALLBACK_BUTTON1_CATEGORY:
             # Показать следующий экран клавиатуры
@@ -133,7 +133,6 @@ def keyboard_callback_handler(update, context):
 
         # for cat_obj in cat_objs:
         #     z.append(cat_obj)
-
         cat_objs = Category.objects.order_by('id')[((i-1)*4):4*i]
 
         TITLES[CALLBACK_BUTTON3_CATEGORY1] = cat_objs[0].category
@@ -141,32 +140,49 @@ def keyboard_callback_handler(update, context):
         TITLES[CALLBACK_BUTTON5_CATEGORY3] = cat_objs[2].category
         TITLES[CALLBACK_BUTTON6_CATEGORY4] = cat_objs[3].category
 
-
-
         query.edit_message_text(
-            text = 'Выберите категорию, вы на странице номер' + ' ' + str(i),
+            text = 'Выберите категорию, вы на странице номер' + ' ' + str(i) + ' из ' + str(z),
             reply_markup=category_keyboard(),
         )
 
     elif data == CALLBACK_BUTTON7_CATEGORY_NEXT:
 
         i += 1
-
-        cat_objs = Category.objects.order_by('id')[((i-1)*4):4*i]
+        if q%4!=0:
+            if int(z-i)>0:
+                cat_objs = Category.objects.order_by('id')[((i-1)*4):4*i]
+            else:
+                cat_objs = Category.objects.order_by('id')[((i-1)*4):(((i-1)*4)+(q%4))]
+        else:
+            cat_objs = Category.objects.order_by('id')[((i-1)*4):4*i]
 
         TITLES[CALLBACK_BUTTON3_CATEGORY1] = cat_objs[0].category
         TITLES[CALLBACK_BUTTON4_CATEGORY2] = cat_objs[1].category
         TITLES[CALLBACK_BUTTON5_CATEGORY3] = cat_objs[2].category
-        # TITLES[CALLBACK_BUTTON6_CATEGORY4] = cat_objs[3].category
-
-
+        TITLES[CALLBACK_BUTTON6_CATEGORY4] = cat_objs[3].category
 
         query.edit_message_text(
-            text = 'Выберите категорию, вы на странице номер' + ' ' + str(i),
+            text = 'Выберите категорию, вы на странице номер' + ' ' + str(i) + ' из ' + str(z),
             reply_markup=category_keyboard(),
         )
 
-    if i == 1:
+    elif data == CALLBACK_BUTTON7_CATEGORY_NEXT:
+
+        i -= 1 
+
+        query.edit_message_text(
+            text = 'Выберите категорию, вы на странице номер' + ' ' + str(i) + ' из ' + str(z),
+            reply_markup=category_keyboard(),
+        )
+
+    elif data == CALLBACK_BUTTON_CATEGORY_MENU:
+        query.edit_message_text(
+            text = 'Вы вернулись обратно в меню. '+ quest(),
+            reply_markup=menu_keyboard(),
+        )
+
+
+    elif i == 1:
             # Показать следующий экран клавиатуры
             # (оставить тот же текст, но указать другой массив кнопок)
         # cat_objs = Category.objects.order_by('id')[:4]
@@ -181,7 +197,14 @@ def keyboard_callback_handler(update, context):
         TITLES[CALLBACK_BUTTON5_CATEGORY3] = cat_objs[2].category
         TITLES[CALLBACK_BUTTON6_CATEGORY4] = cat_objs[3].category
 
+        query.edit_message_text(
+            text = 'Выберите категорию, вы на странице номер' + ' ' + str(i) + ' из ' + str(z),
+            reply_markup=category_keyboard(),
+        )
 
+
+
+#----------------------------------------#
 def quest():
     return 'Выберите дальнейшие действия, вы можете или найти тесты по категориям или посмотреть результаты своих пройденных тестов'
 
