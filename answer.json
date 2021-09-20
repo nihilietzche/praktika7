@@ -1,0 +1,118 @@
+{
+  "ok": true,
+  "result": [
+    {
+      "update_id": 127718145,
+      "message": {
+        "message_id": 19,
+        "from": {
+          "id": 580788883,
+          "is_bot": false,
+          "first_name": "The",
+          "last_name": "Ya",
+          "username": "Djdbsisbdhdns",
+          "language_code": "ru"
+        },
+        "chat": {
+          "id": 580788883,
+          "first_name": "The",
+          "last_name": "Ya",
+          "username": "Djdbsisbdhdns",
+          "type": "private"
+        },
+        "date": 1631976444,
+        "text": "1984794863:AAG_joWVg6p3VoVQVV5hmPwip74TIodOmiM",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 46,
+            "type": "code"
+          }
+        ]
+      }
+    },
+    {
+      "update_id": 127718146,
+      "message": {
+        "message_id": 20,
+        "from": {
+          "id": 580788883,
+          "is_bot": false,
+          "first_name": "The",
+          "last_name": "Ya",
+          "username": "Djdbsisbdhdns",
+          "language_code": "ru"
+        },
+        "chat": {
+          "id": 580788883,
+          "first_name": "The",
+          "last_name": "Ya",
+          "username": "Djdbsisbdhdns",
+          "type": "private"
+        },
+        "date": 1631976791,
+        "text": "/start",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 6,
+            "type": "bot_command"
+          }
+        ]
+      }
+    },
+    {
+      "update_id": 127718147,
+      "message": {
+        "message_id": 21,
+        "from": {
+          "id": 580788883,
+          "is_bot": false,
+          "first_name": "The",
+          "last_name": "Ya",
+          "username": "Djdbsisbdhdns",
+          "language_code": "ru"
+        },
+        "chat": {
+          "id": 580788883,
+          "first_name": "The",
+          "last_name": "Ya",
+          "username": "Djdbsisbdhdns",
+          "type": "private"
+        },
+        "date": 1631976878,
+        "text": "/start",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 6,
+            "type": "bot_command"
+          }
+        ]
+      }
+    },
+    {
+      "update_id": 127718148,
+      "message": {
+        "message_id": 22,
+        "from": {
+          "id": 580788883,
+          "is_bot": false,
+          "first_name": "The",
+          "last_name": "Ya",
+          "username": "Djdbsisbdhdns",
+          "language_code": "ru"
+        },
+        "chat": {
+          "id": 580788883,
+          "first_name": "The",
+          "last_name": "Ya",
+          "username": "Djdbsisbdhdns",
+          "type": "private"
+        },
+        "date": 1632058816,
+        "text": "hi"
+      }
+    }
+  ]
+}
